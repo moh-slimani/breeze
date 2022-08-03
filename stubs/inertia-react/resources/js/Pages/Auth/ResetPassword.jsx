@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import Button from '@/Components/Button';
 import Guest from '@/Layouts/Guest';
 import Input from '@/Components/Input';
+import InputError from '@/Components/InputError';
 import Label from '@/Components/Label';
-import ValidationErrors from '@/Components/ValidationErrors';
 import { Head, useForm } from '@inertiajs/inertia-react';
 
 export default function ResetPassword({ token, email }) {
@@ -34,8 +34,6 @@ export default function ResetPassword({ token, email }) {
         <Guest>
             <Head title="Reset Password" />
 
-            <ValidationErrors errors={errors} />
-
             <form onSubmit={submit}>
                 <div>
                     <Label forInput="email" value="Email" />
@@ -49,6 +47,8 @@ export default function ResetPassword({ token, email }) {
                         autoComplete="username"
                         handleChange={onHandleChange}
                     />
+
+                    <InputError message={errors.email} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
@@ -64,6 +64,8 @@ export default function ResetPassword({ token, email }) {
                         isFocused={true}
                         handleChange={onHandleChange}
                     />
+
+                    <InputError message={errors.password} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
@@ -78,6 +80,8 @@ export default function ResetPassword({ token, email }) {
                         autoComplete="new-password"
                         handleChange={onHandleChange}
                     />
+
+                    <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
