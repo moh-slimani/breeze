@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import Button from '@/Components/Button';
-import Guest from '@/Layouts/Guest';
-import Input from '@/Components/Input';
+import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
-import Label from '@/Components/Label';
+import InputLabel from '@/Components/InputLabel';
+import PrimaryButton from '@/Components/PrimaryButton';
+import TextInput from '@/Components/TextInput';
 import { Head, useForm } from '@inertiajs/inertia-react';
 
 export default function ResetPassword({ token, email }) {
@@ -31,14 +31,14 @@ export default function ResetPassword({ token, email }) {
     };
 
     return (
-        <Guest>
+        <GuestLayout>
             <Head title="Reset Password" />
 
             <form onSubmit={submit}>
                 <div>
-                    <Label forInput="email" value="Email" />
+                    <InputLabel forInput="email" value="Email" />
 
-                    <Input
+                    <TextInput
                         type="email"
                         id="email"
                         name="email"
@@ -52,9 +52,9 @@ export default function ResetPassword({ token, email }) {
                 </div>
 
                 <div className="mt-4">
-                    <Label forInput="password" value="Password" />
+                    <InputLabel forInput="password" value="Password" />
 
-                    <Input
+                    <TextInput
                         type="password"
                         id="password"
                         name="password"
@@ -69,9 +69,9 @@ export default function ResetPassword({ token, email }) {
                 </div>
 
                 <div className="mt-4">
-                    <Label forInput="password_confirmation" value="Confirm Password" />
+                    <InputLabel forInput="password_confirmation" value="Confirm Password" />
 
-                    <Input
+                    <TextInput
                         type="password"
                         id="password_confirmation"
                         name="password_confirmation"
@@ -85,11 +85,11 @@ export default function ResetPassword({ token, email }) {
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
-                    <Button className="ml-4" processing={processing}>
+                    <PrimaryButton className="ml-4" processing={processing}>
                         Reset Password
-                    </Button>
+                    </PrimaryButton>
                 </div>
             </form>
-        </Guest>
+        </GuestLayout>
     );
 }
