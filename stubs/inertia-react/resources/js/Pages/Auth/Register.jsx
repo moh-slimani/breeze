@@ -39,8 +39,6 @@ export default function Register() {
                     <InputLabel forInput="name" value="Name" />
 
                     <TextInput
-                        type="text"
-                        id="name"
                         name="name"
                         value={data.name}
                         className="mt-1 block w-full"

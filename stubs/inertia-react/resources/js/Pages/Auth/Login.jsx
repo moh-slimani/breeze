@@ -41,8 +41,7 @@ export default function Login({ status, canResetPassword }) {
                     <InputLabel forInput="email" value="Email" />
 
                     <TextInput
-                        type="text"
-                        id="email"
+                        type="email"
                         name="email"
                         value={data.email}
                         className="mt-1 block w-full"
