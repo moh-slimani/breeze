@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
@@ -39,6 +39,7 @@ export default function Register() {
                     <InputLabel forInput="name" value="Name" />
 
                     <TextInput
+                        id="name"
                         name="name"
                         value={data.name}
                         className="mt-1 block w-full"
@@ -55,6 +56,7 @@ export default function Register() {
                     <InputLabel forInput="email" value="Email" />
 
                     <TextInput
+                        id="email"
                         type="email"
                         id="email"
                         name="email"
@@ -72,6 +74,7 @@ export default function Register() {
                     <InputLabel forInput="password" value="Password" />
 
                     <TextInput
+                        id="password"
                         type="password"
                         id="password"
                         name="password"
@@ -89,6 +92,7 @@ export default function Register() {
                     <InputLabel forInput="password_confirmation" value="Confirm Password" />
 
                     <TextInput
+                        id="password_confirmation"
                         type="password"
                         id="password_confirmation"
                         name="password_confirmation"
