@@ -1,6 +1,6 @@
 import {PageProps as ExtendedPropsInterface} from "@inertiajs/inertia";
 import {User} from "@/types/User";
-import route, {Config, RouteParam, RouteParamsWithQueryOverload} from "ziggy-js";
+import  {Config, RouteParam, RouteParamsWithQueryOverload} from "ziggy-js";
 import Pusher from 'pusher-js'
 import Echo from 'laravel-echo'
 import {Axios} from "axios";
@@ -13,10 +13,16 @@ declare module '@inertiajs/inertia' {
     }
 }
 
+declare function route(
+    name: string,
+    params?: RouteParamsWithQueryOverload | RouteParam,
+    absolute?: boolean,
+    config?: Config,
+): string;
 
 declare module 'vue' {
     interface ComponentCustomProperties {
-        $route: typeof route,
+        $route: route,
     }
 }
 

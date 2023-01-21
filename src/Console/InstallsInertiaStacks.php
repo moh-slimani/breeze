@@ -21,9 +21,7 @@ trait InstallsInertiaStacks
         // NPM Packages...
         $this->updateNodePackages(function ($packages) {
             return [
-                '@inertiajs/inertia' => '^0.11.0',
-                '@inertiajs/inertia-vue3' => '^0.6.0',
-                '@inertiajs/progress' => '^0.2.7',
+                '@inertiajs/vue3' => '^1.0.0',
                 '@tailwindcss/forms' => '^0.5.3',
                 '@vitejs/plugin-vue' => '^4.0.0',
                 'autoprefixer' => '^10.4.12',
@@ -113,7 +111,6 @@ trait InstallsInertiaStacks
     {
         $this->updateNodePackages(function ($packages) {
             return [
-                '@inertiajs/server' => '^0.1.0',
                 '@vue/server-renderer' => '^3.2.31',
             ] + $packages;
         });
@@ -146,9 +143,7 @@ trait InstallsInertiaStacks
         // NPM Packages...
         $this->updateNodePackages(function ($packages) {
             return [
-                '@inertiajs/inertia' => '^0.11.0',
-                '@inertiajs/inertia-vue3' => '^0.6.0',
-                '@inertiajs/progress' => '^0.2.7',
+                '@inertiajs/vue3' => '^0.6.0',
                 '@tailwindcss/forms' => '^0.5.3',
                 '@types/lodash' => '^4.14.191',
                 '@types/ziggy-js' => '^1.3.2',
@@ -265,7 +260,6 @@ trait InstallsInertiaStacks
     {
         $this->updateNodePackages(function ($packages) {
             return [
-                '@inertiajs/server' => '^0.1.0',
                 '@vue/server-renderer' => '^3.2.31',
             ] + $packages;
         });

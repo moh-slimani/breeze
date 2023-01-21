@@ -8,7 +8,8 @@
         "jsx": "preserve",
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "esModuleInterop": true,
+        "esModuleInterop": false,
+        "allowSyntheticDefaultImports": true,
         "lib": [
             "ESNext",
             "DOM"
