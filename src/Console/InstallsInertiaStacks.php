@@ -138,17 +138,17 @@ trait InstallsInertiaStacks
     protected function installInertiaVueTsStack()
     {
         // Install Inertia...
-        $this->requireComposerPackages('inertiajs/inertia-laravel:^0.6.3', 'laravel/sanctum:^2.8', 'tightenco/ziggy:^1.0');
+        $this->requireComposerPackages('inertiajs/inertia-laravel:^0.6.9', 'laravel/sanctum:^2.15', 'tightenco/ziggy:^1.0');
 
         // NPM Packages...
         $this->updateNodePackages(function ($packages) {
             return [
-                '@inertiajs/vue3' => '^0.6.0',
                 '@tailwindcss/forms' => '^0.5.3',
-                '@types/lodash' => '^4.14.191',
+                '@tailwindcss/line-clamp'=> '^0.4.2',
                 '@types/ziggy-js' => '^1.3.2',
                 '@vitejs/plugin-vue' => '^4.0.0',
                 'autoprefixer' => '^10.4.12',
+                '@inertiajs/vue3' => '^1.0.0',
                 'ziggy-js' => '^1.5.0',
                 'postcss' => '^8.4.18',
                 'tailwindcss' => '^3.2.1',
@@ -264,13 +264,13 @@ trait InstallsInertiaStacks
             ] + $packages;
         });
 
-        copy(__DIR__.'/../../stubs/inertia-vue-ts/resources/js/ssr.ts', resource_path('js/ssr.ts'));
+        copy(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/ssr.js', resource_path('js/ssr.js'));
 
         if (file_exists(resource_path('js/ssr.js'))) {
             unlink(resource_path('js/ssr.js'));
         }
 
-        $this->replaceInFile("input: 'resources/js/app.ts',", "input: 'resources/js/app.ts',".PHP_EOL."            ssr: 'resources/js/ssr.ts',", base_path('vite.config.js'));
+        $this->replaceInFile("input: 'resources/js/app.ts',", "input: 'resources/js/app.ts',".PHP_EOL."            ssr: 'resources/js/ssr.js,", base_path('vite.config.js'));
         $this->replaceInFile('});', '    ssr: {'.PHP_EOL."        noExternal: ['@inertiajs/server'],".PHP_EOL.'    },'.PHP_EOL.'});', base_path('vite.config.js'));
 
         (new Process([$this->phpBinary(), 'artisan', 'vendor:publish', '--provider=Inertia\ServiceProvider', '--force'], base_path()))

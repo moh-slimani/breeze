@@ -1,28 +1,33 @@
-import {PageProps as ExtendedPropsInterface} from "@inertiajs/inertia";
 import {User} from "@/types/User";
-import  {Config, RouteParam, RouteParamsWithQueryOverload} from "ziggy-js";
+import {Config, RouteParam, RouteParamsWithQueryOverload} from "ziggy-js";
 import Pusher from 'pusher-js'
 import Echo from 'laravel-echo'
 import {Axios} from "axios";
 
-declare module '@inertiajs/inertia' {
-    export interface PageProps extends ExtendedPropsInterface {
-        auth: {
-            user: User
-        }
+declare module '@inertiajs/vue3' {
+    export function usePage(): {
+        props: {
+            auth: {
+                user: User
+            },
+        };
     }
 }
 
-declare function route(
-    name: string,
-    params?: RouteParamsWithQueryOverload | RouteParam,
-    absolute?: boolean,
-    config?: Config,
-): string;
+declare module 'ziggy-js' {
+    interface Routable {
+        slug: number | string;
+    }
+}
 
-declare module 'vue' {
+declare module '@vue/runtime-core' {
     interface ComponentCustomProperties {
-        $route: route,
+        $route(
+            name: string,
+            params?: RouteParamsWithQueryOverload | RouteParam,
+            absolute?: boolean,
+            config?: Config,
+        ): string,
     }
 }
 
